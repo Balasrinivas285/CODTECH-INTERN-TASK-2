@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerability Scanner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Vulnerability Scanner</h1>
+        <form id="scan-form">
+            <label for="target">Target (IP or URL):</label>
+            <input type="text" id="target" name="target" placeholder="Enter IP or website URL">
+            
+            <label for="scan-type">Scan Type:</label>
+            <select id="scan-type" name="scan-type">
+                <option value="port-scan">Port Scan</option>
+                <option value="software-scan">Outdated Software Scan</option>
+                <option value="misconfiguration-scan">Misconfiguration Scan</option>
+            </select>
+            
+            <button type="button" onclick="startScan()">Start Scan</button>
+        </form>
+        <div id="results">
+            <!-- Scan results will be displayed here -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#results {
+    margin-top: 20px;
+}
+
+function startScan() {
+    const target = document.getElementById('target').value;
+    const scanType = document.getElementById('scan-type').value;
+    
+    if (target === "") {
+        alert("Please enter a target.");
+        return;
+    }
+
+
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = <p>Scanning ${target} for ${scanType}...</p>;
+    
+
+    setTimeout(() => {
+        resultsDiv.innerHTML += <p>Results: (This is just a simulated result)</p>;
+        resultsDiv.innerHTML += <p>Open Ports: 22, 80, 443</p>;
+        resultsDiv.innerHTML += <p>Outdated Software: None detected</p>;
+        resultsDiv.innerHTML += <p>Misconfigurations: None detected</p>;
+    }, 2000);
+}
